@@ -1,4 +1,4 @@
-# Otonom Kod Analiz Agenti v4.2
+# Otonom Kod Analiz Agenti
 
 Lokal LLM (Ollama + llama3.2) ile çalışan AI destekli kod güvenlik ve kalite analiz aracı.
 

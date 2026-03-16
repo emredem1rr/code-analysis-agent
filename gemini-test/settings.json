@@ -1,0 +1,6 @@
+{
+    "app_name": "VulnerableApp",
+    "version": "1.0",
+    "API_KEY": "AKIAIOSFODNN7EXAMPLE",
+    "DB_PASSWORD": "super_secret_sql_pass_123!"
+}

@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+rapor_*.pdf
+rapor_*.txt
+.env

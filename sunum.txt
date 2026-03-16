@@ -1,0 +1,42 @@
+Gemini şunu dedi:
+Harika bir fikir! Yapay Zeka dersi final jürisi, karşılarına sadece "şunu yazdım, bu çıktı" diyen sıradan bir kod okuyucuyla değil; mimariyi, otonomiyi ve karşılaşılan engelleri (halüsinasyonlar gibi) bir mühendis gibi çözen bir öğrenciyle karşılaştığında kesinlikle çok etkilenecektir.
+
+Sunumda kendi motivasyonunu da projeye dahil etmen çok doğal durur. Örneğin, veri madenciliği dersi için müşteri kümeleme algoritmaları yazarken veya öğrenci notlarını tahmin eden regresyon modelleri geliştirirken, yazdığın o karmaşık Python kodlarını ve kullandığın kütüphaneleri (pandas, scikit-learn) otomatik denetleyecek lokal bir asistana ihtiyaç duyduğundan bahsederek harika bir giriş yapabilirsin.
+
+İşte jüri karşısında projeni anlatabileceğin, kurallarını merkeze alan o etkili sunum metni taslağı:
+
+🎤 Sayfa 1: Giriş ve Projenin Amacı
+"Merhaba hocalarım ve arkadaşlarım. Bugün sizlere Yapay Zeka dersi final projem olan Otonom Kod Analiz Agentı v3.0'ı sunacağım.
+
+Özellikle makine öğrenmesi ve veri madenciliği projelerinde karmaşık kodlar yazarken, sistemimde güvenlik açığı veya kötü kod pratikleri olup olmadığını denetleyecek bir asistana ihtiyacım vardı. Ancak kodlarımı buluta (ChatGPT vb.) göndermek istemiyordum. Bu yüzden tamamen lokalimde çalışan, kendi kararlarını kendi veren ve bir ürün kalitesinde rapor üreten bir 'Yapay Zeka Ajanı' (AI Agent) geliştirmeye karar verdim."
+
+🧠 Sayfa 2: Temel Mimari ve Kurallar (Neden Farklı?)
+"Bu projeyi klasik bir Python scriptinden ayıran çok katı tasarım kurallarım vardı:
+
+Lokal LLM Kullanımı: Projenin beyni olarak Ollama üzerinden lokalde koşan Llama 3.2 (3B) modelini kullandım. İnternete veya hiçbir dış API'ye bağımlı değiliz.
+
+Sabit İş Akışı (Workflow) YOK: Projedeki en büyük teknik zorluk buydu. Koda asla 'Önce klasörü aç, sonra .py dosyalarını bul, sonra tek tek tara' şeklinde deterministik bir for döngüsü yazmadım.
+
+İnsan Gibi Karar Verme Mekanizması: Bunun yerine ajana sadece bir 'Alet Çantası' (Tools) verdim: Klasör listeleme, kod analizi, güvenlik taraması ve bağımlılık kontrolü. Ajan, ReAct (Reason + Act) mimarisiyle projeye bakıp 'Burada bir config.json var, içinde şifre olabilir, güvenlik taraması yapmalıyım' diye kendi kendine düşünüp harekete geçiyor."
+
+⚙️ Sayfa 3: Ürün Kalitesinde Araçlar (Tools)
+"Ajanın kullanması için geliştirdiğim araçlar basit metin okuyucular değil, gerçek birer statik analiz aracı kalitesindedir:
+
+kod_analiz: Python'un ast (Abstract Syntax Tree) kütüphanesini kullanarak kodu soyut sözdizimi ağacına çevirir. Cyclomatic Complexity hesaplar, kullanılmayan importları ve çok uzun fonksiyonları tespit eder.
+
+guvenlik_tara: RegEx kullanarak RCE risklerini (eval, exec), güvensiz deserialization (pickle) açıklarını ve konfigürasyon dosyalarındaki sızdırılmış API anahtarlarını bulur.
+
+bagimlilik_kontrol: requirements.txt dosyasını tarayarak versiyonu sabitlenmemiş kütüphaneleri yakalar."
+
+🚨 Sayfa 4: Karşılaşılan Mühendislik Zorlukları ve Çözümler
+"Tabii ki 3 Milyar parametreli küçük bir modeli tamamen serbest bıraktığımda çok ilginç yapay zeka halüsinasyonları ve unutkanlıklarla karşılaştım. Ajan bazen işi yarım bırakıp çıkmaya çalışıyor, bazen aynı aracı aynı dosyada sonsuz döngüye sokuyordu.
+
+Otonomi kuralımı (iş akışı olmaması kuralını) bozmadan bu sorunu çözmek için 'Acımasız Yönetici' (Ruthless Manager Feedback) adını verdiğim bir sistem tasarladım.
+Ajan 'İşim bitti (DONE)' dediğinde, sistem klasördeki gerçek dosyalarla ajanın hafızasını (memory) karşılaştırıyor. Eğer ajan bir dosyayı atlamışsa, programı kapatmak yerine ajana 'Sistem Uyarısı: Henüz işin bitmedi, utils.py dosyasını güvenlik taramasından geçirmedin' diyerek insan gibi bir geri besleme yapıyor. Ajan da hatasını anlayıp eksiklerini tamamlıyor. Böylece hem %100 otonomi hem de %100 eksiksiz sonuç elde etmiş oldum."
+
+🎯 Sayfa 5: Sonuç
+"Sonuç olarak; dosya uzantılarına (.py, .json, .txt) göre farklı araçları otonom olarak seçen, hata yaptığında sistem geri bildirimleriyle rotasını düzelten, lokal ve çok güvenli bir yapay zeka mühendisi geliştirdim. Dinlediğiniz için teşekkür ederim."
+
+Nasıl buldun? Tam bir "Yapay Zeka Mühendisliği" sunumu oldu! Hocaların özellikle ReAct mimarisi ve LLM halüsinasyonlarını deterministik geri beslemeyle (Manager Feedback) çözme kısımlarından çok etkilenecektir.
+
+Sunum sırasında hocaların sorabileceği olası teknik sorular (örneğin: "Neden LangChain kullanmadın da kendi döngünü yazdın?" veya "Prompt'u nasıl optimize ettin?") üzerine çalışıp onlara da birkaç havalı cevap hazırlamamı ister misin?

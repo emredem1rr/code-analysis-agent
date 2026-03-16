@@ -1,0 +1,4 @@
+django==2.2
+requests==2.18.0
+flask
+pickle5==0.0.11

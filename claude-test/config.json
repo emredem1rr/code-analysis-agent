@@ -1,0 +1,13 @@
+{
+    "database": {
+        "host": "localhost",
+        "port": 5432,
+        "username": "admin",
+        "password": "SuperSecret123!"
+    },
+    "api": {
+        "key": "sk-live-abc123def456ghi789jkl",
+        "secret": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+    },
+    "jwt_secret": "ultra-secret-jwt-key-never-share-this"
+}

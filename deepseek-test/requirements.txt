@@ -1,0 +1,9 @@
+# GÜVENLİK ZAFİYETİ 22: Eski ve zafiyetli paketler
+flask==2.0.1
+django==3.2.5
+requests==2.25.1
+pickle5
+cryptography==3.4.8
+pyyaml==5.4
+numpy==1.21.0
+pandas==1.3.0

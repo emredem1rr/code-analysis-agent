@@ -15,19 +15,3 @@ Lokal LLM (Ollama + llama3.2) ile çalışan AI destekli kod güvenlik ve kalite
 pip install ollama streamlit reportlab
 ollama pull llama3.2:3b
 ```
-
-## Çalıştırma
-```bash
-# Terminal (agent)
-python agent.py
-
-# Web arayüzü
-streamlit run ui.py
-```
-```
-
-Sonra tekrar push:
-```
-git add .
-git commit -m "README eklendi"
-git push
